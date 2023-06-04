@@ -1,0 +1,194 @@
+body {
+    background: linear-gradient(to right, rgb(0,188,212), rgb(209, 86, 64));
+    color: #ededed;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+    user-select: none;
+  }
+  
+  
+  .card {
+    width: 600px;
+    height: 800px;
+    margin: 0 auto;
+    margin-top: 60px;
+    background: #333 url("http://source.unsplash.com/PPXSfN8ikTo/600x800") no-repeat; 
+    background-size: cover;
+    border-radius: 4px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.25);
+  }
+  
+  #content-wrapper {
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.25);
+  }
+  
+  #navbar {
+    font-size: 1.25em;
+    padding: 30px;
+  }
+  #navbar span {
+    width: 20px;
+    text-align: center;
+  }
+  #logo {
+    float: left;
+    padding-left: 40px;
+  }
+  #logo-icon {
+    font-size: 28px;
+    position: absolute;
+    color: white;
+  }
+  #login-button:hover, 
+  #sign-up-button:hover {
+    border-bottom: solid 2px #ededed;
+    cursor: pointer;
+  }
+  
+  #login-button.active,
+  #sign-up-button.active {
+    border-bottom: solid 2px #ededed;
+  }
+  
+  
+  .lighter-text {
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+  }
+  
+  
+  #sign-up-form,
+  #login-form {
+    position: absolute;
+    display: block;
+    padding: 1em;
+    width: calc(600px - 2em);
+    /* 800px card - 60px navbar - 25px margin - 2em padding */
+    height: calc(740px - 2em - 25px);
+    margin-top: 25px;
+    background: rgba(0,0,0,0.4);
+  }
+  #login-form {
+    display: none;
+  }
+  #login-form .cta-button {
+    bottom: 275px;
+  }
+  .placeholder {
+    height: 50px;
+    width: 100%;
+  }
+  
+  h2 { text-align: center; }
+  #feature-slider {
+    height: 50px;
+    width: 400px;
+    margin: 40px auto;
+  }
+  
+  .label-container {
+    font-size: 1.15em;
+    height: 50px;
+    line-height: 50px;
+    width: 140px;
+    padding-left: 75px;
+    float: left;
+  }
+  .label-container i {
+    position: absolute;
+    line-height: 50px;
+  }
+  .label-container span {
+    padding-left: 25px;
+  }
+  
+  .input-container {
+    height: 50px;
+    line-height: 50px;
+    width: 280px;
+    float: left;
+  }
+  .input-container input {
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0);
+    outline: none;
+    transition: all 0.2s;
+    color: #949599;
+    width: 100%;
+    font-size: 1.15em;
+  }
+  .input-container input:focus {
+    border-bottom: 2px solid white;
+  }
+  input[type="checkbox"] {
+    margin-top: 20px;
+  }
+  input[type="password"] {
+    letter-spacing: 10px;
+    font-size: 20px;
+  }
+  
+  
+  .cta-button {
+    height: 40px;
+    width: 200px;
+    position: absolute;
+    bottom: 125px;
+    margin: 0 auto;
+    line-height: 40px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.125);
+    transition: 0.2s all;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid rgba(0,0,0,0);
+    
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .cta-button i {
+    left: 25px;
+    line-height: 40px;
+    text-align: left;
+    position: absolute;
+  }
+  .cta-button span {
+    margin: 0; padding: 0;
+  }
+  .cta-button:hover {
+    border: 2px solid white;
+  }
+  
+  #terms-and-conditions {
+    display: inline-block;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 200px;
+    width: 315px;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  .link {
+    color: rgba(255,255,255,0.5);
+    border-bottom: 2px solid rgba(0,0,0,0);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .link:hover {
+    color: white;
+    border-bottom: 2px solid;
+  }
+  
+  .align-right {
+    float: right;
+    text-align: right;
+  }
+  
+  .clear-float {
+    clear: both;
+  }
