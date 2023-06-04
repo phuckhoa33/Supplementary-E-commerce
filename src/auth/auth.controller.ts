@@ -9,11 +9,16 @@ export class AuthController{
         private readonly authService: AuthService
     ){}
 
-    @HttpCode(HttpStatus.OK)
-    @Render('index')
     @Post('login')
-    login(@Body() user: AuthType, @Res() res: Response): Record<string, any>{
-        return this.authService.login(user.email, user.password);
+    async login(@Body() user: AuthType, @Res() res: Response){
+        const data = await this.authService.login(user.email, user.password);
+        console.log(data);
+        
+        if(!data){
+            console.log("FUCK");
+            
+        }
+
     }
     
     @HttpCode(HttpStatus.OK)

@@ -7,7 +7,6 @@ import { jwtConstants } from "./constant";
 import { APP_GUARD } from "@nestjs/core";
 import { AuthGuard } from "./guard/auth.guard";
 import { UserModule } from "src/user/user.module";
-import { UnauthorizedExceptionFilter } from "./filter/unauthorized.filter";
 
 @Module({
     imports: [
