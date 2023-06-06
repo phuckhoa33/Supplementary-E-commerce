@@ -10,8 +10,14 @@ export class UserController {
   ){}
 
   @Get('forgotPassword')
-  @Render('forgotPassword')
-  forgotPassword(){}
+  forgotPassword(@Req() request: Request, @Res() res: Response){
+    if(request.cookies['token']){
+      res.render('index')
+    }
+    else {
+      res.render('changePassword')
+    }
+  }
 
   @Get('sendEmail')
   async sendEmail(): Promise<string> {
@@ -25,9 +31,13 @@ export class UserController {
   }
 
   @Get('changePassword')
-  @Render('changePassword')
-  changePassword(){
-
+  changePassword(@Req() request: Request, @Res() res: Response){
+    if(request.cookies['token']){
+      res.render('index')
+    }
+    else {
+      res.render('changePassword')
+    }
   }
 
   @Get('cart')
