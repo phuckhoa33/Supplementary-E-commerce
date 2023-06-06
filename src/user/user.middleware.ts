@@ -15,7 +15,6 @@ export class UserMiddleware implements NestMiddleware{
             try {
                 const decodedToken = this.jwtService.decode(token);
                 if (decodedToken) {
-                    console.log(decodedToken);
                     
                     req['user'] = decodedToken;
                 } else {

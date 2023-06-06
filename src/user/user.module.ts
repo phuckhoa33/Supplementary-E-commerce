@@ -6,7 +6,7 @@ import { User } from './user.entity';
 import { UserMiddleware } from './user.middleware';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
-import { join } from 'path';
+import { ProductModule } from 'src/product/product.module';
 
 @Module({
   imports: [
@@ -20,7 +20,9 @@ import { join } from 'path';
           pass: 'phuc0972495038',
         },
       }
-    })   
+    }),
+    ProductModule
+       
   ],
   controllers: [UserController],
   providers: [UserService],
