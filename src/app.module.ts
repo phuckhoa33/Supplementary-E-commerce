@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { BankModule } from './payment/bank.module';
 import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AuthModule } from './auth/auth.module';
       autoLoadEntities: true,
       synchronize: true
     }),
-    UserModule, BankModule, ProductModule, AuthModule
+    UserModule, BankModule, ProductModule, AuthModule, CartModule
   ],
   controllers: [AppController],
   providers: [AppService],

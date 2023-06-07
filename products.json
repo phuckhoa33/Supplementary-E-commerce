@@ -17,7 +17,7 @@
         {
             "id": 2,
             "title": "Nước Yến Sào 15% Yến Greebird chưng đường phèn hũ (72g)",
-            "description": "Yến sào chưng đường phèn Green Bird chứa thành phần yến sào hữu cơ chuẩn Asean Organic với sợi yến chiếm 15%, cung cấp nhiều dưỡng chất quý giá và bổ dưỡng, giúp bồi bổ cơ thể, ngăn ngừa lão hóa và tăng cường sức đề kháng. Yến sào kết hợp với đường phèn tạo nên hương vị thơm ngọt, dễ uống, không gắt, thích hợp cho cả gia đình.",
+            "description": "Yến sào chưng đường phèn Green Bird chứa thành phần yến sào hữu cơ chuẩn Asean Organic với sợi yến chiếm 15%, cung cấp nhiều dưỡng chất quý giá và bổ dưỡng, giúp bồi bổ cơ thể, ngăn ngừa lão hóa và tăng cường sức đề kháng",
             "image": "https://cdn.nhathuoclongchau.com.vn/unsafe/447x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00500696_yen_sao_chung_duong_phen_greenbird_72g_4201_62b9_large_551e2a15c6.jpg",
             "price": 3000000,
             "category": "yen",
@@ -31,7 +31,7 @@
         {
             "id": 3,
             "title": "Nước Yến Sào Cao Cấp 15% Yến Nunest không đường hũ (70ml)",
-            "description": "Nước Yến Sào Nunest Không Đường 70ml là kết hợp giữa Yến Sào tự nhiên cùng các dưỡng chất bổ dưỡng cho xương khớp như Collagen type II, Chondroitin, Vitamin K2 giúp bồi bổ và tăng cường sức khỏe. Đặc biệt sản phẩm được chưng cất không đường, có thể dùng được cho người bệnh đái tháo đường hoặc người ăn kiêng.",
+            "description": "Nước Yến Sào Nunest Không Đường 70ml là kết hợp giữa Yến Sào tự nhiên cùng các dưỡng chất bổ dưỡng cho xương khớp",
             "image": "https://cdn.nhathuoclongchau.com.vn/unsafe/447x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032199_nuoc_yen_cao_cap_nunest_khong_duong_70ml_7432_62b2_large_14eaa1e1bd.jpg",
             "price": 3000000,
             "category": "yen",
@@ -45,7 +45,7 @@
         {
             "id": 4,
             "title": "Nước Yến Sào 15% Yến chưng đường phèn (4 hũ x 72g)",
-            "description": "Yến sào chưng đường phèn Green Bird cung cấp nhiều dưỡng chất quý giá và bổ dưỡng, giúp bồi bổ cơ thể, ngăn ngừa lão hóa và tăng cường sức đề kháng. Sản phẩm chứa thành phần yến sào hữu cơ chuẩn Asean Organic với sợi yến chiếm 15%. Yến sào kết hợp với đường phèn tạo nên hương vị thơm ngọt, dễ uống, không gắt, thích hợp cho cả gia đình. Lốc 4 hũ đựng trong hộp giấy tiện dụng, ngăn nắp, phù hợp làm quà biếu tặng.",
+            "description": "Yến sào chưng đường phèn Green Bird cung cấp nhiều dưỡng chất quý giá và bổ dưỡng, giúp bồi bổ cơ thể",
             "image": "https://cdn.nhathuoclongchau.com.vn/unsafe/447x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00500697_yen_sao_chung_duong_phen_greenbird_4_hu_x_72g_1062_62b9_large_d9b6a086fc.jpg",
             "price": 2000000,
             "category": "yen",
@@ -73,7 +73,7 @@
         {
             "id": 6,
             "title": "Nước Yến Sào Cao Cấp 15% Yến Nunest Gold (6 hũ x 70ml)",
-            "description": "Nước Yến Sào cao cấp Nunest Gold chính là giải pháp dinh dưỡng tối ưu giúp bồi bổ sức khỏe và đẩy lùi lão hóa nhờ sự kết hợp giữa Yến sào thiên nhiên cùng các dưỡng chất như Collagen type II, Chondroitin, Vitamin K2,... tốt cho sức khỏe người dùng.",
+            "description": "Nước Yến Sào cao cấp Nunest Gold chính là giải pháp dinh dưỡng tối ưu giúp bồi bổ sức khỏe và đẩy lùi lão hóa nhờ sự kết hợp giữa Yến sào thiên nhiên cùng các dưỡng chất như Collagen type II, Chondroitin, Vitamin K2,... .",
             "image": "https://cdn.nhathuoclongchau.com.vn/unsafe/447x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032206_nuoc_yen_cao_cap_nunest_gold_6_hu_x_70ml_7976_62af_large_f281e1750d.JPG",
             "price": 1000000,
             "category": "yen",
@@ -87,11 +87,14 @@
         {
             "id": 7,
             "title": "Nước Yến Sào Và Hạt Chia 5% Yến Greenbird (6 chai x 185ml)",
-            "description": "Yến Sào Và Hạt Chia Green Bird là thức uống bổ dưỡng, giúp bổ sung năng lượng, axit amin và các dưỡng chất từ yến sào và hạt chia tự nhiên. Sản phẩm là thức uống lành mạnh giúp khỏe dáng đẹp da và bổ sung năng lượng cho phụ nữ, nhất là sau khi luyện tập thể dục thể thao.",
+            "description": "Yến Sào Và Hạt Chia Green Bird là thức uống bổ dưỡng, giúp bổ sung năng lượng, axit amin và các dưỡng chất từ yến sào và hạt chia tự nhiên",
             "image": "https://cdn.nhathuoclongchau.com.vn/unsafe/636x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032206_nuoc_yen_cao_cap_nunest_gold_6_hu_x_70ml_4415_62af_large_4acee36a96.JPG",
             "price": 7000000,
             "category": "yen",
             "gallery": [
+                "https://cdn.nhathuoclongchau.com.vn/unsafe/636x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032206_nuoc_yen_cao_cap_nunest_gold_6_hu_x_70ml_4415_62af_large_4acee36a96.JPG",
+                "https://cdn.nhathuoclongchau.com.vn/unsafe/636x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032206_nuoc_yen_cao_cap_nunest_gold_6_hu_x_70ml_4415_62af_large_4acee36a96.JPG",
+                "https://cdn.nhathuoclongchau.com.vn/unsafe/636x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032206_nuoc_yen_cao_cap_nunest_gold_6_hu_x_70ml_4415_62af_large_4acee36a96.JPG",
                 "https://cdn.nhathuoclongchau.com.vn/unsafe/636x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032206_nuoc_yen_cao_cap_nunest_gold_6_hu_x_70ml_4415_62af_large_4acee36a96.JPG"
             ]
         },

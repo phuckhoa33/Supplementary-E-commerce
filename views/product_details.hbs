@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products | RedStore</title>
     <link rel="stylesheet" href="/css/product/product.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,37 +18,58 @@
     </div>
 
     <!-- Single Products -->
-    <div class="small-container single-product">
+    <form class="small-container single-product myForm">
         <div class="row">
             <div class="col-2">
-                <img src="{{product.image}}" width="100%" id="ProductImg">
+                <img id="image" src="{{product.image}}" width="100%" id="ProductImg">
 
                 <div class="small-img-row">
-                    {{#each product.gallery}}
-                        <div class="small-img-col">
-                            <img src="{{this}}" width="100%" class="small-img">
-                        </div>
-                    {{/each}}
+                    <div class="small-img-col">
+                        <img src="{{product.gallery1}}" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{product.gallery2}}" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{product.gallery3}}" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{product.gallery4}}" width="100%" class="small-img">
+                    </div>
                 </div>
 
             </div>
-            <div class="col-2">
+            <div class="col-2 remove-action">
                 <p><a href="/product/category/{{product.category}}">Home / {{product.category}}</a></p>
-                <h1>{{product.title}}</h1>
-                <h4>{{product.price}}vnd</h4>
-                <input type="number" value="1">
-                <a href="" class="btn">Add To Cart</a>
+                <h1 id="name">{{product.title}}</h1>
+                <div>
+                    Giá: <span id="price">{{product.price}}</span>vnd
 
-                <h3>Product Details <i class="fa fa-indent"></i></h3>
+                </div>
+                <div>
+
+                    Số hiệu sản phẩm: <span id="id">{{product.id}}</span>
+                </div>
+                <input id="quantity" type="number" value="1">
+                <form action="">
+
+                </form>
+                {{#if havedButton}}
+                    <a class="btn" href="/cart">Đi tới giỏ hàng</a>
+                {{else}}
+                    <button type="submit" onclick="add(event)" id="btn-remove" class="btn">Thêm vào giỏ hàng</button>
+                {{/if}}
+
+                <h3>Chi tiết sản phẩm <i class="fa fa-indent"></i></h3>
                 <br>
                 <p>{{product.description}}</p>
             </div>
         </div>
-    </div>
+    </form>
     <!-- title -->
     <div class="small-container">
         <div class="row row-2">
-            <h2>Những sảm phẩm tương tự</h2>
+            <h2>Những sản phẩm tương tự</h2>
 
             <p>
                 <a href="/product/category/{{product.category}}">Xem thêm</a>   
@@ -79,6 +101,52 @@
 
     <!-- product gallery -->
     <script>
+        function add(event){
+            event.preventDefault();
+            const name = document.querySelector('#name').innerHTML;
+            const price = document.querySelector('#price').innerHTML;
+            const quantity = document.querySelector('#quantity').value;
+            const image = document.querySelector('#image').src;
+            const id = document.querySelector('#id').innerHTML;
+            
+            const data = {
+                id,
+                name, 
+                image,
+                price,
+                quantity
+            }
+
+            fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                // Handle the response
+                if (response.ok) {
+                    // Request was successful
+                    const newLink = document.createElement('a');
+                    newLink.href = '/cart'
+                    newLink.classList.add('btn')
+                    newLink.textContent = "Đi tới giỏ hàng"
+                    const buttonToRemove = document.querySelector('#btn-remove');
+                    buttonToRemove.parentNode.replaceChild(newLink, buttonToRemove);
+                    console.log(response);  
+                    console.log('POST request successful');
+                } else {
+                    // Request failed
+                    console.error('POST request failed');
+                }
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error(error);
+            });
+            
+        }
         var ProductImg = document.getElementById("ProductImg");
         var SmallImg = document.getElementsByClassName("small-img");
 
@@ -94,6 +162,7 @@
         SmallImg[3].onclick = function () {
             ProductImg.src = SmallImg[3].src;
         }
+
 
     </script>
 </body>

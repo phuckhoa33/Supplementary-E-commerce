@@ -40,17 +40,6 @@ export class UserController {
     }
   }
 
-  @Get('cart')
-  cart(@Req() request: Request, @Res() res: Response): any{
-    if(request.cookies['token']){
-      const user = this.userService.getUserId(request.cookies['token']);
-      res.render('cart');
-      return user.sub;
-    }else{
-      res.render('account');
-    }
-  }
-
   @Get('account')
   account(@Req() request: Request, @Res() res: Response){
       if(request.cookies['token']){

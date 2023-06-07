@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Render, Req, Res, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Render, Req, Res, Session, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "./guard/auth.guard";
 import { AuthService } from "./auth.service";
 import { Request, Response } from "express";
@@ -18,7 +18,7 @@ export class AuthController{
         }
         else {
             res.cookie('token', data.access_token);
-            res.render('index');
+            res.redirect('/');
         }
 
     }
@@ -33,7 +33,7 @@ export class AuthController{
         }
         else {
             res.cookie('token', data.access_token);
-            res.render('index');
+            res.redirect('/');
 
         }
     }
@@ -41,7 +41,8 @@ export class AuthController{
 
     @Get('logout')
     @Render('account')
-    logout(@Res() res: Response){
+    logout(@Res() res: Response, @Session() session: Record<string, any>){
+        session.cartItems = [];
         res.clearCookie('token');
     }
 }
