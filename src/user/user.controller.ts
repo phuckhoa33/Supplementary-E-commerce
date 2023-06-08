@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Render, Req, Res, Session } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { Request, Response } from 'express';
 import { CartService } from 'src/cart/cart.service';
+import { PaymentDTO } from './dto/payment.dto';
 
 @Controller('user')
 export class UserController {
@@ -12,33 +13,30 @@ export class UserController {
   ){}
 
   @Get('forgotPassword')
-  forgotPassword(@Req() request: Request, @Res() res: Response){
+  async forgotPassword(@Req() request: Request, @Res() res: Response, @Session() session: Record<string, any>){
     if(request.cookies['token']){
       res.render('index')
     }
     else {
-      res.render('changePassword')
+      await this.userService.sendCode();
+      res.render('forgotPassword')
     }
   }
 
-  @Get('sendEmail')
-  async sendEmail(): Promise<string> {
-    const to = 'mphuc8671@gmail.com';
-    const subject = 'Test Email';
-    const text = 'This is a test email sent from NestJS.';
-
-    await this.userService.sendEmail(to, subject, text);
-
-    return 'Email sent successfully';
+  @Post('sendMail')
+  async sendEmail(@Body() payment: PaymentDTO, @Res() res: Response) {
+    await this.userService.sendEmail(payment);
+    
+    res.redirect('/');
   }
 
   @Get('changePassword')
-  changePassword(@Req() request: Request, @Res() res: Response){
+  async changePassword(@Req() request: Request, @Res() res: Response, @Session() session: Record<string, any>){
     if(request.cookies['token']){
       res.render('index')
     }
     else {
-      res.render('changePassword')
+      res.render('index');
     }
   }
 

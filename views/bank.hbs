@@ -18,7 +18,7 @@
     <div class="container"> 
         <h1>Hóa đơn</h1>
         <h3> Thông tin liên lạc và ghi chú</h3>
-        <form action="">
+        <form action="/user/sendMail" method="post">
             <p> Tên: * <input type="text" name="name" id="name" value="{{user.username}}" required placeholder="Sooraj Jha"></p> 
             <p> Lời nhắn: * <textarea name="note" id"note" cols="100" rows="10" required placeholder=""></textarea></p>
             <p> Số điện thoại: * <input type="text" name="telephone" id="telephone" required placeholder="09333*****"></p>
@@ -27,16 +27,16 @@
             
             <p>
                 Chọn thẻ: *
-                <select name="card_type" id="card_type" required>
-                <option value="">-- Loại thẻ --</option>
-                <option value="vietacombank">Vietcombank</option>
-                <option value="vpbank">VPBank</option>
-                <option value="eximbank">Eximbank</option>
-                <option value="anbinhbank">An bình bank</option>
-            </select>
+                <select name="cardType" id="" required>
+                    <option value="">-- Loại thẻ --</option>
+                    <option value="vietacombank">Vietcombank</option>
+                    <option value="vpbank">VPBank</option>
+                    <option value="eximbank">Eximbank</option>
+                    <option value="anbinhbank">An bình bank</option>
+                </select>
             </p>
             <p>
-                Số tiền: * <input type="number" name="card_number" id="card_number" maxlength="10" value="{{total}}" required placeholder="">
+                Số tiền: * <input type="number" id="card_number" maxlength="10" name="total" value="{{total}}" required placeholder="">
             </p>
             <input type="submit" value="Pay Now">
 

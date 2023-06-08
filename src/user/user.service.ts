@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as nodemailer from 'nodemailer';
 import { MailerService } from '@nestjs-modules/mailer';
+import { PaymentDTO } from './dto/payment.dto';
 
 
 @Injectable()
@@ -32,16 +33,46 @@ export class UserService {
     return this.jwtService.decode(token);
   }
 
-  async sendEmail(to: string, subject: string, text: string): Promise<void> {
+  generateRandomCode(length: number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let orderId = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      const randomCharacter = characters.charAt(randomIndex);
+      orderId += randomCharacter;
+    }
+  
+    return orderId;
+  }
+
+  async sendEmail(payment: PaymentDTO) {
+    const now = new Date();
+
+    // Get the current date
+    const currentDate = now.toLocaleDateString();
+    payment.date = currentDate
+    payment.orderId = this.generateRandomCode(12);
     await this.mailerService.sendMail({
-      to: "mphuc8671@gmail.com",
-      subject: "Welcome to my website",
-      template: "index",
+      to: "phuckhoa81@gmail.com",
+      subject: "Đơn khách hàng",
+      template: "confirmation",
+
       context: {
-        name: "phuckhoa"
+        payment
       }
     });
+  }
 
-    
+  async sendCode(){
+    await this.mailerService.sendMail({
+      to: "phuckhoa81@gmail.com",
+      subject: "Mã xác nhận tài khoản",
+      template: "send_code",
+
+      context: {
+        url: "http://localhost:3001/user/forgotPassword"
+      }
+    });
   }
 }
