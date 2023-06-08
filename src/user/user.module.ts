@@ -7,21 +7,35 @@ import { UserMiddleware } from './user.middleware';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { ProductModule } from 'src/product/product.module';
+import { CartModule } from 'src/cart/cart.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { join } from 'path';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
-    MailerModule.forRoot({
-      transport: {
-        host: 'smtp.gmail.com',
-        secure: false,
-        auth: {
-          user: 'phuckhoa81@gmail.com',
-          pass: 'phuc0972495038',
+    MailerModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: async (config: ConfigService) => ({
+        transport: {
+          host: config.get('MAIL_USER'),
+          pass: config.get('MAIL_PASSWORD')
+
         },
-      }
+        defaults: {
+          from: `"No Reply" <${config.get('MAIL_FROM')}`
+        },
+        template: {
+          dir: join(__dirname, 'views'),
+          adapter: new HandlebarsAdapter(),
+          options: {
+            strict: true
+          }
+        }
+      }),
+      inject: [ConfigService]
     }),
-    ProductModule
+    ProductModule, CartModule
        
   ],
   controllers: [UserController],

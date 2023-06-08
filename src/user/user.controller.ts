@@ -2,11 +2,13 @@ import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { Request, Response } from 'express';
+import { CartService } from 'src/cart/cart.service';
 
 @Controller('user')
 export class UserController {
   constructor(
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly cartServer: CartService
   ){}
 
   @Get('forgotPassword')
@@ -50,4 +52,11 @@ export class UserController {
       }
   }
 
+  @Get('payment')
+  @Render('bank')
+  async toPayment(@Req() req: Request, @Res() res: Response){
+    const user = await this.userService.findOneUser(req['user']['email']);
+    const total = this.cartServer.calculateAllItem();
+    return {user, total};
+  } 
 }

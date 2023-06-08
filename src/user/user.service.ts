@@ -4,6 +4,7 @@ import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as nodemailer from 'nodemailer';
+import { MailerService } from '@nestjs-modules/mailer';
 
 
 @Injectable()
@@ -11,7 +12,8 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private readonly userRepo: Repository<User>,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    private readonly mailerService: MailerService
   ){}
 
   async getAllUsers(): Promise<User[]> {
@@ -31,22 +33,15 @@ export class UserService {
   }
 
   async sendEmail(to: string, subject: string, text: string): Promise<void> {
-    const transporter = nodemailer.createTransport({
-      /* Configure the email service provider here */
-      service: 'Gmail',
-      auth: {
-        user: 'phuckhoa81@gmail.com',
-        pass: 'phuc0972495038',
+    await this.mailerService.sendMail({
+      to: "mphuc8671@gmail.com",
+      subject: "Welcome to my website",
+      template: "index",
+      context: {
+        name: "phuckhoa"
       }
     });
 
-    const mailOptions = {
-      from: 'phuckhoa81@gmail.com',
-      to,
-      subject,
-      text,
-    };
-
-    await transporter.sendMail(mailOptions);
+    
   }
 }

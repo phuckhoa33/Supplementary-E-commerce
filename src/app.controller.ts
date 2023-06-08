@@ -36,4 +36,9 @@ export class AppController {
     
   }
 
+
+  @Get()
+  getHello(){
+    
+  }
 }

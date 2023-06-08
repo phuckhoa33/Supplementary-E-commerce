@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
-import { BankModule } from './payment/bank.module';
 import { ProductModule } from './product/product.module';
 import { AuthModule } from './auth/auth.module';
 import { CartModule } from './cart/cart.module';
@@ -18,7 +17,7 @@ import { CartModule } from './cart/cart.module';
       autoLoadEntities: true,
       synchronize: true
     }),
-    UserModule, BankModule, ProductModule, AuthModule, CartModule
+    UserModule, ProductModule, AuthModule, CartModule
   ],
   controllers: [AppController],
   providers: [AppService],

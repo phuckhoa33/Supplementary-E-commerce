@@ -23,7 +23,7 @@ export class AuthService{
                 message: "Login:Password or Email is unsuccessfully"
             }
         }
-        const payload = { sub: user.id, username: user.username };
+        const payload = { sub: user.id, username: user.username, email: user.email };
         
         return {
             access_token: await this.jwtService.signAsync(payload),
@@ -40,7 +40,7 @@ export class AuthService{
             }
         }
         const newUser = await this.userService.create(user);
-        const payload = {sub: newUser.id, username: newUser.username};
+        const payload = {sub: newUser.id, username: newUser.username, email: newUser.email};
         return {
             access_token: await this.jwtService.signAsync(payload),
             message: "Register is successfully",

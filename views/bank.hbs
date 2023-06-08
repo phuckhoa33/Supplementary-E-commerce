@@ -3,36 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bank/paymentdetail.css">
+    <title>All Products | RedStore</title>
+    <link rel="stylesheet" href="/css/product/product.css">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/product/product.css">
-    <title>Payment form </title>
+    <link rel="stylesheet" href="/css/bank/paymentdetail.css">
 </head>
 <body>
     <div class="container">
         {{>navbar}}
     </div>
     <div class="container"> 
-        <h1>PAYMENT FORM </h1>
-        <h3> CONTACT DETAIL</h3>
-        <p> Required fiels are followed by *</p>
+        <h1>Hóa đơn</h1>
+        <h3> Thông tin liên lạc và ghi chú</h3>
         <form action="">
-            <p> Name: * <input type="text" name="name" id="name" required placeholder="Sooraj Jha"></p>
-            <fieldset >
-                <legend> Gender </legend>
-                <p> Male * <input type="radio" name="gender" id="Male" required>  Female * <input type="radio" name="gender" required id="Female"> </p></fieldset> 
-            <p> Adress: * <textarea name="adress" id"adress" cols="100" rows="10" required placeholder="New Shukhiabaad Hoshiarpur"></textarea></p>
-            <p> Email: * <input type="email" name="email" id="email" required placeholder="jhasooraj56@gmail.com"></p>
-            <p> Pin Code: * <input type="number" name="pincode" id="pincode" required placeholder="123765"></p>
-            <h2> PAYMENT DETAIL</h2>
+            <p> Tên: * <input type="text" name="name" id="name" value="{{user.username}}" required placeholder="Sooraj Jha"></p> 
+            <p> Lời nhắn: * <textarea name="note" id"note" cols="100" rows="10" required placeholder=""></textarea></p>
+            <p> Số điện thoại: * <input type="text" name="telephone" id="telephone" required placeholder="09333*****"></p>
+            <p> Email: * <input type="email" name="email" id="email" value="{{user.email}}" required placeholder="example@gmail.com"></p>
+            <h2>Chi tiết hóa đơn</h2>
             
             <p>
-                Card Type: *
+                Chọn thẻ: *
                 <select name="card_type" id="card_type" required>
-                <option value="">-- Select a Card Type --</option>
+                <option value="">-- Loại thẻ --</option>
                 <option value="vietacombank">Vietcombank</option>
                 <option value="vpbank">VPBank</option>
                 <option value="eximbank">Eximbank</option>
@@ -40,18 +36,22 @@
             </select>
             </p>
             <p>
-                Card Number: * <input type="number" name="card_number" id="card_number" required placeholder="1234-8970-8727-8227">
-            </p>
-            <p>
-                Expiry Date * <input type="date" name="expiry_date" id="expiry_date" required>
-            </p>
-            <p>
-                CVV: * <input type="password" name="cvv" id="cvv" required placeholder="000">
+                Số tiền: * <input type="number" name="card_number" id="card_number" maxlength="10" value="{{total}}" required placeholder="">
             </p>
             <input type="submit" value="Pay Now">
 
         </form>
     </div>
     {{>footer}}
+    <script>
+        const telephone = document.querySelector('#telephone');
+        telephone.addEventListener('input', function(event) {
+            const inputValue = event.target.value;
+            event.target.value = event.target.value.replace(/\D/g, '');
+            if (event.target.value > 10) {
+                event.target.value = event.target.value.slice(0, 10);
+            }
+        });
+    </script>
 </body>
 </html>
