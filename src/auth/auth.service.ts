@@ -1,5 +1,6 @@
 import { HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
+import { User } from "src/user/user.entity";
 import { UserService } from "src/user/user.service";
 
 @Injectable()
@@ -14,36 +15,36 @@ export class AuthService{
         if(!user){
             return {
                 statusCode: HttpStatus.UNAUTHORIZED,
-                message: "Login: Password or Email is unsuccessfully"
+                message: "Login: email hoặc mật khẩu không đúng"
             }
         }
         else if(user?.password!==pass){
             return {
                 statusCode: HttpStatus.UNAUTHORIZED,
-                message: "Login:Password or Email is unsuccessfully"
+                message: "Login: email hoặc mật khẩu không đúng"
             }
         }
         const payload = { sub: user.id, username: user.username, email: user.email };
         
         return {
             access_token: await this.jwtService.signAsync(payload),
-            message: "Login is successfully"
+            message: "Đăng nhập thành công"
         };
     }
 
-    async register(user: AuthType): Promise<any> {
+    async register(user: User): Promise<any> {
         const oldUser = await this.userService.findOneUser(user.email);
         if(oldUser){
             return {
                 statusCode: HttpStatus.UNAUTHORIZED,
-                message: "Register: This user is exist"
+                message: "Register: Người dùng không tồn tại"
             }
         }
         const newUser = await this.userService.create(user);
         const payload = {sub: newUser.id, username: newUser.username, email: newUser.email};
         return {
             access_token: await this.jwtService.signAsync(payload),
-            message: "Register is successfully",
+            message: "Đăng ký thành công",
         }
     }
 }

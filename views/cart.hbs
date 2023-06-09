@@ -47,16 +47,25 @@
             <table>
                 <tr>
                     <td>Subtotal</td>
-                    <td>{{total}}vnd</td>
+                    <td class="total">{{total}}vnd</td>
                 </tr>
             </table>
         </div>
-        <button class="btn btn-danger"><a href="/user/payment">Payment</a></button>
+        <button id="btn" class="btn btn-danger"><a href="/user/payment">Payment</a></button>
     </div>
 
     <!-- Footer -->
 
     {{>footer}}
+    <script>
+        const total = document.querySelector('.total').innerHTML;
+        const btn = document.querySelector('#btn');
+        if(total.length<2){
+            btn.disabled = true;
+        }
+        else {
+            btn.disabled = false;
+        }
     </script>
 
 </body>

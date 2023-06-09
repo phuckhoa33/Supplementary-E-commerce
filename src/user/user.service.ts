@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import * as nodemailer from 'nodemailer';
 import { MailerService } from '@nestjs-modules/mailer';
-import { PaymentDTO } from './dto/payment.dto';
+import { PaymentDTO } from '../payment/payment.dto';
 
 
 @Injectable()
@@ -25,8 +25,12 @@ export class UserService {
     return await this.userRepo.findOne({where: {email}})
   }
 
-  async create(user: UserType): Promise<User>{
+  async create(user: User): Promise<User>{
     return await this.userRepo.save(user);
+  }
+
+  async update(user: User){
+    return await this.userRepo.update(user.id, user);
   }
   
   getUserId(token: string): any {
@@ -64,14 +68,13 @@ export class UserService {
     });
   }
 
-  async sendCode(){
+  async sendCode(code: string, email: string){
     await this.mailerService.sendMail({
-      to: "phuckhoa81@gmail.com",
+      to: email,
       subject: "Mã xác nhận tài khoản",
       template: "send_code",
-
       context: {
-        url: "http://localhost:3001/user/forgotPassword"
+        url: `http://localhost:3001/user/changePassword/${code}`
       }
     });
   }

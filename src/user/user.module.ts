@@ -10,6 +10,8 @@ import { ProductModule } from 'src/product/product.module';
 import { CartModule } from 'src/cart/cart.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { join } from 'path';
+import { PaymentModule } from 'src/payment/payment.module';
+import { PaymentController } from 'src/payment/payment.controller';
 
 @Module({
   imports: [
@@ -39,7 +41,7 @@ import { join } from 'path';
       }),
       inject: [ConfigService]
     }),
-    ProductModule, CartModule
+    ProductModule, CartModule, PaymentModule
        
   ],
   controllers: [UserController],
@@ -48,6 +50,6 @@ import { join } from 'path';
 })
 export class UserModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-      consumer.apply(UserMiddleware).forRoutes('*')
+      consumer.apply(UserMiddleware).forRoutes("*")
   }
 }

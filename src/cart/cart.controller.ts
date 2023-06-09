@@ -37,8 +37,12 @@ export class CartController{
     getCartItems(@Session() session: Record<string, any>, @Req() request: Request, @Res() res: Response) {
         if(request.cookies['token']){
             const products = session.cartItems || [];
-            const total = this.cartService.calculateAllItem();
-            res.render('cart', {products, total});
+            if(products.length===0){
+                res.render('wait', {message: "Giỏ hàng đang trống. Vui lòng thêm sản phẩm vào giỏ hàng"})
+            }else {
+                const total = this.cartService.calculateAllItem();
+                res.render('cart', {products, total});
+            }
         }
         else {
             res.render('account');

@@ -14,7 +14,7 @@ export class AuthController{
     async login(@Body() user: AuthType, @Res() res: Response){
         const data = await this.authService.login(user.email, user.password);
         if(data.statusCode===HttpStatus.UNAUTHORIZED){
-            res.render('account', { message: data.message });
+            res.render('account', { message: data.message, alert: "alert alert-danger" });
         }
         else {
             res.cookie('token', data.access_token);
@@ -25,11 +25,11 @@ export class AuthController{
     
     @HttpCode(HttpStatus.OK)
     @Post('register')
-    async register(@Body() user: AuthType, @Res() res: Response){
+    async register(@Body() user: any, @Res() res: Response){
         const data = await this.authService.register(user);
         
         if(data.statusCode===HttpStatus.UNAUTHORIZED){
-            res.render('account', { message: data.message });
+            res.render('account', { message: data.message, alert: "alert alert-danger" });
         }
         else {
             res.cookie('token', data.access_token);
