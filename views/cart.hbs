@@ -32,9 +32,9 @@
                             <img src="{{this.image}}">
                             <div>
                                 <p>{{this.name}}</p>
-                                <small>Price: {{this.price}}</small>
+                                <small>Giá: {{this.price}}</small>
                                 <br>
-                                <a href="">Remove</a>
+                                <a href="/cart/delete/{{this.id}}">Xóa  </a>
                             </div>
                         </div>
                     </td>
@@ -46,17 +46,24 @@
         <div class="total-price">
             <table>
                 <tr>
-                    <td>Subtotal</td>
+                    <td>Tổng</td>
                     <td class="total">{{total}}vnd</td>
                 </tr>
             </table>
         </div>
-        <button id="btn" class="btn btn-danger"><a href="/user/payment">Payment</a></button>
+        <div class="{{alert}}" role="alert">
+            {{message}}
+        </div>
+        <button id="btn" class="btn btn-danger"><a href="/cart/clear">Xóa hết</a></button>
+        <button id="btn" class="btn btn-danger"><a  href="{{disabled}}">Thanh toán</a></button>
     </div>
 
     <!-- Footer -->
 
     {{>footer}}
+    <script>
+
+    </script>
     <script>
         const total = document.querySelector('.total').innerHTML;
         const btn = document.querySelector('#btn');
