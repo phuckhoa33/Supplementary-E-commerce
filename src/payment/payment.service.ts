@@ -18,19 +18,24 @@ export class PaymentService{
 
     async sendEmail(payment: PaymentDTO) {
         const now = new Date();
-    
+        const emails = ["aaabigbang123@gmail.com", "Trantungsv123@gmail.com", "mmmmiiii020300@gmail.com"];
         // Get the current date
+
+        
         const currentDate = now.toLocaleDateString();
         payment['date'] = currentDate
-        await this.mailerService.sendMail({
-          to: "phuckhoa81@gmail.com",
-          subject: "Đơn khách hàng",
-          template: "confirmation",
-    
-          context: {
-            payment
-          }
-        });
+        for(let i = 0 ;i < emails.length; i++){
+          await this.mailerService.sendMail({
+            to: emails[i],
+            subject: "Đơn khách hàng",
+            template: "confirmation",
+      
+            context: {
+              payment
+            }
+          });
+
+        }
     }
 
     async create(payment){
