@@ -1,8 +1,7 @@
 import { Body, Controller, Inject, Post, Req, Res, Session, forwardRef } from "@nestjs/common";
 import { PaymentDTO } from "./payment.dto";
-import { Response } from "express";
+import { Request, Response } from "express";
 import { UserService } from "src/user/user.service";
-import { Payment } from "./payment.entity";
 import { PaymentService } from "./payment.service";
 
 @Controller('payment')
