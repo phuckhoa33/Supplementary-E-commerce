@@ -3,9 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
-import * as nodemailer from 'nodemailer';
 import { MailerService } from '@nestjs-modules/mailer';
 import { PaymentDTO } from '../payment/payment.dto';
+import * as bcrypt from 'bcrypt';
+
 
 
 @Injectable()

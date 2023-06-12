@@ -27,13 +27,18 @@ export class UserController {
   }
 
   @Post('sendCode')
-  @Render('wait')
-  async sendCode(@Session() session: Record<string, any>, @Body() send: SendDTO){
+  async sendCode(@Session() session: Record<string, any>, @Body() send: SendDTO, @Req() req: Request, @Res() res: Response){
     const code = this.userService.generateRandomCode(6);
-    session.code = code;
-    session.email = send.email;
-    await this.userService.sendCode(code, send.email);
-    return {message: "Kiểm tra email của bạn để đặt lại password"};
+    const user = await this.userService.findOneUser(send.email);
+    if(user){
+      session.code = code;
+      session.email = send.email;
+      // await this.userService.sendCode(code, send.email);
+      res.render('wait', {message: "Kiểm tra email của bạn để đặt lại password"});
+    }
+    else {
+      res.render('forgotPassword', {alert: "alert alert-danger", message: "Tài khoản không tồn tại"})
+    }
   }
 
   @Post('sendMail')
