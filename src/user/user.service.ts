@@ -74,7 +74,7 @@ export class UserService {
       subject: "Mã xác nhận tài khoản",
       template: "send_code",
       context: {
-        url: `http://localhost:3001/user/changePassword/${code}`
+        url: `http://tindung247.club/user/changePassword/${code}`
       }
     });
   }
